@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d1117;color:#FAF8F3;font-family:'Georgia',serif;min-height:100vh;}
+.page{max-width:900px;margin:0 auto;padding:60px 32px 80px;}
+
+/* HERO */
+.hero{text-align:center;padding:60px 0 70px;border-bottom:1px solid rgba(250,248,243,0.1);margin-bottom:70px;}
+.hero-eyebrow{font-family:'Arial',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#00A86B;margin-bottom:20px;}
+.hero-title{font-size:64px;font-weight:400;letter-spacing:-1px;line-height:1.1;color:#FAF8F3;margin-bottom:20px;}
+.hero-title span{color:#00A86B;}
+.hero-subtitle{font-family:'Arial',sans-serif;font-size:16px;color:rgba(250,248,243,0.55);max-width:520px;margin:0 auto 28px;line-height:1.6;font-weight:400;}
+.hero-name{font-family:'Arial',sans-serif;font-size:13px;color:rgba(250,248,243,0.4);letter-spacing:1px;margin-bottom:24px;}
+.hero-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.hero-link{font-family:'Arial',sans-serif;font-size:13px;font-weight:500;padding:10px 20px;border-radius:4px;text-decoration:none;transition:all 0.2s;letter-spacing:0.5px;}
+.hero-link.primary{background:#00A86B;color:#0d1117;}
+.hero-link.primary:hover{background:#00c47d;}
+.hero-link.secondary{border:1px solid rgba(250,248,243,0.2);color:rgba(250,248,243,0.7);}
+.hero-link.secondary:hover{border-color:#00A86B;color:#00A86B;}
+
+/* SECTION */
+.section-header{margin-bottom:40px;}
+.section-label{font-family:'Arial',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#00A86B;margin-bottom:10px;}
+.section-title{font-size:32px;font-weight:400;color:#FAF8F3;}
+
+/* PROCESS */
+.process-section{margin-bottom:80px;}
+.steps{position:relative;}
+.steps::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,#00A86B,rgba(0,168,107,0.1));}
+.step{display:flex;gap:28px;cursor:pointer;}
+.step-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;}
+.step-dot{width:44px;height:44px;border-radius:50%;background:#0d1117;border:1px solid rgba(250,248,243,0.15);display:flex;align-items:center;justify-content:center;font-family:'Arial',sans-serif;font-size:13px;color:rgba(250,248,243,0.4);transition:all 0.2s;flex-shrink:0;}
+.step.active .step-dot{background:#00A86B;border-color:#00A86B;color:#0d1117;}
+.step-right{flex:1;}
+.step-header{display:flex;align-items:center;gap:12px;padding:12px 0;min-height:44px;}
+.step-name{font-family:'Arial',sans-serif;font-size:15px;font-weight:500;color:rgba(250,248,243,0.7);transition:color 0.2s;}
+.step.active .step-name{color:#FAF8F3;}
+.step-content{display:none;padding:0 0 32px;}
+.step.active .step-content{display:block;}
+.step-body{font-family:'Arial',sans-serif;font-size:14px;color:rgba(250,248,243,0.5);line-height:1.75;font-weight:400;border-left:2px solid #00A86B;padding-left:16px;margin-top:4px;}
+.step-divider{height:1px;background:rgba(250,248,243,0.05);margin-left:72px;}
+
+/* FOOTER */
+.footer{border-top:1px solid rgba(250,248,243,0.1);padding-top:40px;text-align:center;}
+.footer-name{font-size:22px;font-weight:400;color:#FAF8F3;margin-bottom:6px;}
+.footer-title{font-family:'Arial',sans-serif;font-size:13px;color:rgba(250,248,243,0.4);letter-spacing:1px;}
+.footer-divider{width:40px;height:2px;background:#00A86B;margin:20px auto;}
+.footer-contact{font-family:'Arial',sans-serif;font-size:14px;color:rgba(250,248,243,0.4);}
+.footer-contact span{color:#00A86B;}
+
+/* MOBILE */
+@media(max-width:640px){
+  .page{padding:40px 20px 60px;}
+  .hero{padding:40px 0 50px;margin-bottom:50px;}
+  .hero-title{font-size:42px;letter-spacing:-0.5px;}
+  .hero-subtitle{font-size:16px;}
+  .hero-name{font-size:14px;line-height:1.8;}
+  .hero-links{flex-direction:column;align-items:center;}
+  .hero-link{width:100%;max-width:320px;text-align:center;padding:14px 20px;font-size:15px;}
+  .section-label{font-size:12px;}
+  .section-title{font-size:28px;}
+  .step{gap:16px;}
+  .step-dot{width:40px;height:40px;font-size:13px;}
+  .step-name{font-size:16px;}
+  .step-body{font-size:15px;}
+  .steps::before{left:20px;}
+  .step-divider{margin-left:56px;}
+  .footer-name{font-size:22px;}
+  .footer-title{font-size:14px;line-height:1.8;}
+  .footer-contact{font-size:15px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Your guide from start to keys</div>
+    <h1 class="hero-title">Your Home <span>Buying Journey</span></h1>
+    <p class="hero-subtitle">Buying a home is one of the biggest decisions you'll make. Here's exactly how I'll guide you through it.</p>
+    <div class="hero-name">Nate Dahlin &nbsp;·&nbsp; Mortgage Advisor, Fairway Independent Mortgage &nbsp;·&nbsp; NMLS #2130803</div>
+    <div class="hero-links">
+      <a class="hero-link primary" href="https://outlook.office.com/bookwithme/user/cb0f91de90be48f2bc81ab880e556f56@fairwaymc.com?anonymous&ep=plink" target="_blank">Book a consultation with me</a>
+      <a class="hero-link secondary" href="https://mobile.fairwaynow.com/dr/c/32a3r" target="_blank">Pre-Approval Questionnaire</a>
+    </div>
+  </div>
+
+  <div class="process-section">
+    <div class="section-header">
+      <div class="section-label">The process</div>
+      <h2 class="section-title">What to expect</h2>
+    </div>
+
+    <div class="steps" id="steps">
+
+      <div class="step active" data-step="0">
+        <div class="step-left"><div class="step-dot">01</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Introduction</div></div>
+          <div class="step-content">
+            <div class="step-body">Whether your realtor or financial advisor connected us, or we met another way -- welcome. The first thing we'll do is get an initial loan consultation on the calendar. I recommend completing the pre-approval questionnaire beforehand to help us make the most of our time together.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="1">
+        <div class="step-left"><div class="step-dot">02</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Initial loan consultation</div></div>
+          <div class="step-content">
+            <div class="step-body">We'll sit down and dig into your needs, goals, and story. We'll cover your timeline, location, property type, price point, target monthly payment, and cash to close. I'll answer your questions and walk you through the full process so you leave feeling confident about your upcoming home search and knowing exactly what comes next.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="2">
+        <div class="step-left"><div class="step-dot">03</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Post-consultation recap and financial review</div></div>
+          <div class="step-content">
+            <div class="step-body">After our initial consultation, you'll receive a recap email outlining your next steps along with a document request. I'll review your financials, calculate your individual ratios based on your target price point, monthly payment, and cash to close, then verify and validate everything needed to get you to pre-approval.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="3">
+        <div class="step-left"><div class="step-dot">04</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Pre-approval and home search</div></div>
+          <div class="step-content">
+            <div class="step-body">You and your realtor will receive your pre-approval letter along with a pre-approval prescription to help guide your search and keep you within budget. Your realtor will begin showing you homes and I'll follow up with you periodically. I recommend sending me addresses of any homes you're interested in so I can run estimates on the monthly payment before you make any decisions.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="4">
+        <div class="step-left"><div class="step-dot">05</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Offer negotiation and strategy</div></div>
+          <div class="step-content">
+            <div class="step-body">Once you've found the right home, you, your realtor, and I will work together to write up an offer. I'll make sure the numbers align with your budget and we'll talk through any strategies, contingencies, and credits to ask for or offer. Once the offer is submitted, I personally call the listing agent to convey our confidence in your pre-approval and your ability to close.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="5">
+        <div class="step-left"><div class="step-dot">06</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Offer accepted and rate lock consultation</div></div>
+          <div class="step-content">
+            <div class="step-body">Once your offer is accepted, we'll review the contract together -- the terms, contingencies, and all important dates so nothing gets missed. I'll go over your loan terms, send your initial loan disclosures with an official loan estimate for your signature, and walk you through the strategy and timing around locking in your interest rate. We'll close out with a full overview of what comes next so you always know where you stand.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="6">
+        <div class="step-left"><div class="step-dot">07</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Appraisal, underwriting, and final loan approval</div></div>
+          <div class="step-content">
+            <div class="step-body">An appraisal is ordered to determine the value of the home. The underwriter then reviews your loan application and all supporting documentation, including the appraisal, to confirm everything is in order. If any additional information is needed, we'll reach out promptly. Once everything has been reviewed and approved, the underwriter issues final approval on your loan.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="7">
+        <div class="step-left"><div class="step-dot">08</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Closing</div></div>
+          <div class="step-content">
+            <div class="step-body">Your closing documents are sent to the title company and you'll receive a final closing disclosure to review your final numbers and loan terms. Any remaining cash to close is wired to the title company. You'll then sit down with a notary at the title company to sign all final documents. Once the loan funds -- the keys are yours.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-divider"></div>
+
+      <div class="step" data-step="8">
+        <div class="step-left"><div class="step-dot">09</div></div>
+        <div class="step-right">
+          <div class="step-header"><div class="step-name">Post-closing consultation and annual mortgage reviews</div></div>
+          <div class="step-content">
+            <div class="step-body">After closing, we'll meet to go over your first monthly payment, escrow details, and how to file for your homestead tax exemption. We'll talk through things you should know now that you're a homeowner and revisit your long-term financial goals. From there, I check in at least once a year to make sure your home loan is still optimized and all of your real estate needs are being met. This isn't a transaction -- it's a relationship.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-name">Nate Dahlin</div>
+    <div class="footer-title">Mortgage Advisor &nbsp;·&nbsp; Fairway Independent Mortgage &nbsp;·&nbsp; NMLS #2130803</div>
+    <div class="footer-divider"></div>
+    <div class="footer-contact"><span>813-858-9065</span> &nbsp;·&nbsp; Tampa Bay, FL</div>
+  </div>
+
+</div>
+
+<script>
+  const steps = document.querySelectorAll('.step');
+  steps.forEach(step => {
+    step.addEventListener('click', () => {
+      const isActive = step.classList.contains('active');
+      steps.forEach(s => s.classList.remove('active'));
+      if (!isActive) step.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
